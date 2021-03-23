@@ -1,0 +1,54 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "test",
+      "entry": "This is a test",
+      "mood": "Happy",
+      "id": 2
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "test",
+      "entry": "This is a test",
+      "mood": "Happy",
+      "id": 3
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "test",
+      "entry": "This is a test",
+      "mood": "Happy",
+      "id": 4
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "test",
+      "entry": "This is a test",
+      "mood": "Happy",
+      "id": 5
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "json",
+      "entry": "Today we are focusing on editing and deleting posts.",
+      "mood": "Happy",
+      "id": 6
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

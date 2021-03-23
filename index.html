@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>Daily Journal</title>
     <link rel="stylesheet" href="./styles/main.css">
 </head>
@@ -31,7 +31,7 @@
                 </fieldset>
                 <fieldset>
                     <label for="mood">Mood for the Day</label>
-                    <select name="cars" id="cars" form="carform">
+                    <select name="mood" id="journalMood" form="moodForm">
                         <option value="Happy">Happy</option>
                         <option value="Content">Content</option>
                         <option value="Sad">Sad</option>
@@ -39,31 +39,14 @@
                         <option value="Irritated">Irritated</option>
                       </select>
                 </fieldset>
-                <button type="submit">Record Journal Entry</button>
+                <button type="submit" id="submit">Record Journal Entry</button>
             </form>
-            <!-- <div class ="calender">
-                <h3>Date</h3>
-            </div>
-            <div class="concept">
-                <h3>Concepts Covered</h3>
-            </div>
-            <div class="textArea">
-                <h3>Journal Entry</h3>
-            </div>
-            <div class ="mood">
-                <h3>Mood of the Day</h3>
-            </div>
-            <div class="button">
-                
-            </div> -->
         </section>
         <div>
             <h2>Recent Entries</h2>
             <aside id="entryLog">
-
+                
             </aside>
-            
-           
         </div>
     </main>
     <footer>
