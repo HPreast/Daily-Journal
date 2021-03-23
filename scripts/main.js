@@ -2,6 +2,7 @@ import { EntryListComponent } from "./JournalList.js"
 import { getEntries, postEntry, deletePost, getSingleEntry, updateEntry } from "./Data/dataManager.js"
 import { apiObj } from "./apiObj.js"
 import { entryEdit } from "./entryEdit.js"
+import { JournalEntryComponent } from "./JournalEntry.js"
 
 const startJournal = () => {
     getEntries()
@@ -32,11 +33,12 @@ document.addEventListener("click", event => {
     }
 })
 
+//edit event listener
 const showEdit = (entry) => {
     const entryElement = document.querySelector(".formContainer");
     entryElement.innerHTML = entryEdit(entry);
 }
-//edit event listener
+
 document.addEventListener("click", event => {
     // event.preventDefault();
     if (event.target.id.startsWith("edit")) {
@@ -45,6 +47,17 @@ document.addEventListener("click", event => {
             .then(response => {
                 showEdit(response);
             })
+    }
+})
+
+//cancel event listener
+const cancelEdit = (entry) => {
+    const cancelElement = document.querySelector(".formContainer");
+    cancelElement.InnerHTML = JournalEntryComponent(entry)
+}
+document.addEventListener("click", event => {
+    if (event.target.id.startsWith("newEntry")) {
+       cancelEdit();
     }
 })
 
