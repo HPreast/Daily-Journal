@@ -1,5 +1,5 @@
 export const getEntries = () => {
-    return fetch("http://localhost:8088/posts")
+    return fetch("http://localhost:8088/entries")
     // , {
     //     headers : {
     //         "Content-Type": "application/json",
@@ -10,7 +10,7 @@ export const getEntries = () => {
     }
 
 export const postEntry = (entry) => {
-    return fetch("http://localhost:8088/posts", {
+    return fetch("http://localhost:8088/entries", {
         method: "POST",
         headers : {
             "Content-Type": "application/json",
@@ -22,12 +22,12 @@ export const postEntry = (entry) => {
 }
 
 export const deletePost = postId => {
-    return fetch("http://localhost:8088/posts/${postId}", {
+    return fetch(`http://localhost:8088/entries/${postId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
         }
     })
     .then(response => response.json())
-    .then(getPosts)
+    .then(getEntries)
 }

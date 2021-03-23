@@ -1,5 +1,5 @@
 import { EntryListComponent } from "./JournalList.js"
-import { getEntries, postEntry } from "./Data/dataManager.js"
+import { getEntries, postEntry, deletePost } from "./Data/dataManager.js"
 import { apiObj } from "./apiObj.js"
 
 const startJournal = () => {
@@ -18,4 +18,17 @@ document.getElementById("submit").addEventListener("click", (event) => {
         console.log("test", parsedResponse)
     })
 })
+
+
+
+document.addEventListener("click", event => {
+    if (event.target.id.startsWith("delete")) {
+       
+        const postId = event.target.id.split("__")[1];
+        deletePost(postId)
+        location.reload();
+        
+    }
+})
+
 startJournal();

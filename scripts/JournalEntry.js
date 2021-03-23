@@ -11,6 +11,7 @@ export const JournalEntryComponent = (entry) => {
             <li class ="entry-entry">Entry: ${entry.entry}</li>
             <li class ="entry-mood">Mood: ${entry.mood}</li>
             </ul>
+            <button id="delete__${entry.id}" class="delete">Delete</button>
         </section>
     `
 }
