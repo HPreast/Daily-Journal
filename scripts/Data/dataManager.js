@@ -31,3 +31,20 @@ export const deletePost = postId => {
     .then(response => response.json())
     .then(getEntries)
 }
+
+export const getSingleEntry = (entryId) => {
+    return fetch(`http://localhost:8088/entries/${entryId}`)
+        .then(response => response.json()) 
+}
+
+export const updateEntry = (entry) => {
+    return fetch(`http://localhost:8088/entries/${entry.id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(entry)
+    })
+    .then(response => response.json())
+    .then(getEntries)
+} 
