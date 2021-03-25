@@ -1,8 +1,11 @@
 import { EntryListComponent } from "./JournalList.js"
-import { getEntries, postEntry, deletePost, getSingleEntry, updateEntry } from "./Data/dataManager.js"
+import { getEntries, postEntry, deletePost, getSingleEntry, updateEntry, logoutUser, getLoggedInUser } from "./Data/dataManager.js"
 import { apiObj } from "./apiObj.js"
 import { entryEdit } from "./entryEdit.js"
 import { JournalEntryComponent } from "./JournalEntry.js"
+import { navBar } from "./nav/navBar.js"
+import { LoginForm } from "./auth/loginForm.js"
+import { RegisterForm } from "./auth/registerForm.js"
 
 const startJournal = () => {
     getEntries()
@@ -86,4 +89,79 @@ document.addEventListener("click", event => {
 
 })
 
+// Logout event listener
+document.addEventListener("click", event => {
+    if (event.target.id === "logout") {
+        logoutUser();
+        console.log(getLoggedInUser());
+        sessionStorage.clear();
+        checkForUser();
+    }
+})
+
+// Login event listener
+document.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id === "login__submit") {
+        const userObject = {
+            name: document.querySelector("input[name='name']").value,
+            email: document.querySelector("input[name='email']").value
+        }
+        loginUser(userObject)
+        .then(dbUserObj => {
+            if (dbUserObj){
+                sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+                startJournal();
+            } else {
+                const entryElement = document.querySelector(".formContainer");
+                entryElement.innerHTML = `<p class="center">That user does not exist. Please try again or register for your free account.</p> ${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+
+            }
+        })
+    }
+})
+
+// Register event listener
+document.addEventListener("click", event => {
+    event.preventDefault();
+    if (event.target.id === "register__submit") {
+      //collect all the details into an object
+      const userObject = {
+        name: document.querySelector("input[name='registerName']").value,
+        email: document.querySelector("input[name='registerEmail']").value
+      }
+      registerUser(userObject)
+      .then(dbUserObj => {
+        sessionStorage.setItem("user", JSON.stringify(dbUserObj));
+        startJournal();
+      })
+    }
+  })
+
+const showNavBar = () => {
+    const navElement = document.querySelector("nav");
+    navElement.innerHTML = navBar();
+}
+
+const showLoginRegister = () => {
+    showNavBar();
+    const entryElement = document.querySelector(".formContainer");
+    entryElement.innerHTML = `${LoginForm()} <hr/> <hr/> ${RegisterForm()}`;
+    const postElement = document.querySelector("#entryLog");
+    postElement.innerHTML = "";
+}
+
+const checkForUser = () => {
+    if (sessionStorage.getItem("user")) {
+        setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
+        startJournal();
+    } else {
+       showLoginRegister();
+    }
+}
+
+
+
+getLoggedInUser();
 startJournal();
+checkForUser();
