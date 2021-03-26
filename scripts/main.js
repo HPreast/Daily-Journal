@@ -163,5 +163,5 @@ const checkForUser = () => {
 
 
 getLoggedInUser();
-startJournal();
+// startJournal();
 checkForUser();
