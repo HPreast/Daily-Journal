@@ -1,11 +1,12 @@
 import { EntryListComponent } from "./JournalList.js"
-import { getEntries, postEntry, deletePost, getSingleEntry, updateEntry, logoutUser, getLoggedInUser } from "./Data/dataManager.js"
+import { getEntries, postEntry, deletePost, getSingleEntry, updateEntry, logoutUser, getLoggedInUser, registerUser, setLoggedInUser, loginUser } from "./Data/dataManager.js"
 import { apiObj } from "./apiObj.js"
 import { entryEdit } from "./entryEdit.js"
 import { JournalEntryComponent } from "./JournalEntry.js"
 import { navBar } from "./nav/navBar.js"
 import { LoginForm } from "./auth/loginForm.js"
 import { RegisterForm } from "./auth/registerForm.js"
+import { entryForm } from "./entryForm.js"
 
 const startJournal = () => {
     getEntries()
@@ -151,17 +152,23 @@ const showLoginRegister = () => {
     postElement.innerHTML = "";
 }
 
+const showEntryForm = () => {
+    const entryElement = document.querySelector(".formContainer");
+    entryElement.innerHTML = entryForm();
+}
+
 const checkForUser = () => {
     if (sessionStorage.getItem("user")) {
         setLoggedInUser(JSON.parse(sessionStorage.getItem("user")));
         startJournal();
+        showEntryForm();
     } else {
        showLoginRegister();
     }
 }
 
 
-
+showNavBar();
 getLoggedInUser();
 // startJournal();
 checkForUser();
