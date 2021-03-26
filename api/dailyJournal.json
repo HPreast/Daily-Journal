@@ -5,14 +5,31 @@
       "date": "03/03/21",
       "concept": "JavaScript,HTML, & CSS",
       "entry": "We finished our Automated World group project and presented them to the class.",
-      "mood": "Happy"
+      "mood": "Happy",
+      "userId": 1
     },
     {
       "id": 3,
       "date": "03/04/21",
       "concept": "JavaScript",
       "entry": "Bryan broke down JavaScript and its uses in order to give us a better understanding. It helped a lot.",
-      "mood": "Happy"
+      "mood": "Happy",
+      "userId": 1
+    },
+    {
+      "date": "2021-03-23",
+      "concept": "JSON & JavaScript",
+      "entry": "We were introduced to delete and edit buttons. So far I have been able to implement the delete button into my daily journal.",
+      "mood": "Happy",
+      "id": 4,
+      "userId": 1
+    }
+  ],
+  "users": [
+    {
+      "name": "Hunter",
+      "email": "hunter@me.com",
+      "id": 1
     }
   ]
 }
